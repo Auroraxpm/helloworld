@@ -46,7 +46,7 @@ local encrypt_methods_ss = {
 	"aes-256-gcm",
 	"chacha20-ietf-poly1305",
 	"xchacha20-ietf-poly1305"
-	--[[ stream
+	-- stream
 	"table",
 	"rc4",
 	"rc4-md5",
@@ -62,7 +62,7 @@ local encrypt_methods_ss = {
 	"camellia-256-cfb",
 	"salsa20",
 	"chacha20",
-	"chacha20-ietf" ]]
+	"chacha20-ietf" 
 }
 
 local encrypt_methods_v2ray_ss = {
@@ -248,6 +248,7 @@ for _, v in ipairs(encrypt_methods_ss) do
 end
 o.rmempty = true
 o:depends("type", "ss")
+o:depends("type", "v2ray")
 
 o = s:option(ListValue, "encrypt_method_v2ray_ss", translate("Encrypt Method"))
 for _, v in ipairs(encrypt_methods_v2ray_ss) do
