@@ -24,7 +24,7 @@ local proxy = ucic:get_first(name, 'server_subscribe', 'proxy', '0')
 local switch = ucic:get_first(name, 'server_subscribe', 'switch', '1')
 local subscribe_url = ucic:get_first(name, 'server_subscribe', 'subscribe_url', {})
 local filter_words = ucic:get_first(name, 'server_subscribe', 'filter_words', '过期时间/剩余流量')
-local v2_tj = luci.sys.exec('type -t -p trojan') ~= "" and "trojan" or "v2ray"
+local v2_tj = luci.sys.exec('type -t -p trojan') ~= "" and "v2ray" 
 local log = function(...)
 	print(os.date("%Y-%m-%d %H:%M:%S ") .. table.concat({...}, " "))
 end
@@ -220,7 +220,8 @@ local function processData(szType, content)
 		local method = userinfo:sub(1, userinfo:find(":") - 1)
 		local password = userinfo:sub(userinfo:find(":") + 1, #userinfo)
 		result.alias = UrlDecode(alias)
-		result.type = "ss"
+		result.type = "v2ray"
+		result.v2ray_protocol = 'shadowsocks'
 		result.server = host[1]
 		if host[2]:find("/%?") then
 			local query = split(host[2], "/%?")
